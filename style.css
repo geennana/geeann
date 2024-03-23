@@ -1,0 +1,136 @@
+/* style.css */
+
+.custom-header {
+  background-color: #207497; 
+  width: 100%;
+  z-index: 1000;
+  position: sticky;  
+  top: 0;
+margin-top: 0;
+}
+
+/* Adjust body margin to prevent content from hiding under the fixed header */
+body {
+  margin: 0;
+}
+
+.body-padding-fixed-header {
+  padding-top:0;
+}
+
+.custom-footer {
+  background-color: #207497;
+ width: auto;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}
+
+.no-left-margin {
+  padding-left: 0 !important;
+}
+
+
+.navbar-nav .nav-link {
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.custom-header .navbar-nav .nav-link.active {
+  font-weight: bold; /* Make the active link bold if needed */
+}
+.navbar-nav .nav-item {
+  margin-right: 10px; /* Adjust the right margin as needed */
+}
+
+.navbar-nav .nav-link:not(.active):hover {
+  text-decoration: underline;
+}
+/* Tourism */
+
+.favdiv {
+	margin-top: 45px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Poppins', sans-serif;
+	height: auto;
+ 	width: auto;
+}
+.favtitle {
+	font-family: 'Poppins', sans-serif;
+	padding: 1px;
+	text-align: center;
+	font-size: 10;
+	font-weight: 20;
+	text-transform: uppercase;	
+	color: #000000;
+}
+.favdesign {
+	background-color: rgb(255, 255, 255); /* Changed to rgba to include alpha transparency */
+	height: 90%;
+	width: auto;
+	text-align: center;
+	border: 5px solid #FFFFFF;
+	border-radius: 5%;
+	color: #000000;
+	float: left;
+	margin: 25px;
+	margin-bottom: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow for the shadow effect */
+}
+.favdesign h1 {
+  margin-top: 10px;
+  font-size: 20px; /* Adjust the font size value as needed */
+}
+.favdesign img {
+	margin-top: 10px;
+  margin-bottom: 5px;
+	width: 300px; 
+	height: 300px;
+	border-radius: 5%;  
+}
+.favdesign p {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.col-md-12 img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+ // JavaScript to add/remove class based on header position
+window.addEventListener('DOMContentLoaded', function() {
+  let header = document.querySelector('.custom-header');
+  let body = document.querySelector('body');
+
+  function adjustBodyPadding() {
+    if (header.classList.contains('fixed-header')) {
+      body.classList.add('body-padding-fixed-header');
+    } else {
+      body.classList.remove('body-padding-fixed-header');
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > header.offsetHeight) {
+      header.classList.add('fixed-header');
+    } else {
+      header.classList.remove('fixed-header');
+    }
+    adjustBodyPadding();
+  });
+
+  // Adjust padding on page load
+  adjustBodyPadding();
+});
